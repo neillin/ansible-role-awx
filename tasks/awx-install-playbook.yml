@@ -7,7 +7,7 @@
   when: awx_vars_yml is undefined   
     
 - name: Run the AWX installation playbook with vars yml.
-  command: "ansible-playbook -i inventory install.yml -e postgres_data_dir={{ postgres_data_dir }} -e @{{ awx_vars_yml }}"
+  command: "ansible-playbook -i inventory install.yml -e postgres_data_dir={{ postgres_data_dir }} -e @/root/{{ awx_vars_yml }}"
   args:
     chdir: "{{ awx_repo_dir }}/installer"
     creates: /etc/awx_playbook_complete
