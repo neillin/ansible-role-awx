@@ -18,7 +18,7 @@
     accept_hostkey: true
     
 - name: Upload awx vars yml file to /root
-  copy: src={{ ansible_facts.env['PWD'] }}/{{ awx_vars_yml }} dest="/root/{{ awx_vars_yml }}" force=yes
+  copy: src={{ playbook_dir }}/../{{ awx_vars_yml }} dest="/root/{{ awx_vars_yml }}" force=yes
   when: awx_vars_yml is defined
 
 - include: awx-install-playbook.yml
