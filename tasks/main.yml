@@ -16,6 +16,10 @@
     update: "{{ awx_keep_updated }}"
     force: true
     accept_hostkey: true
+    
+- name: Upload multiple files to /root
+  copy: src={{ awx_vars_yml }} dest="/root/{{ awx_vars_yml }}" force=yes
+  when: awx_vars_yml is defined
 
 - include: awx-install-playbook.yml
   when: awx_run_install_playbook
